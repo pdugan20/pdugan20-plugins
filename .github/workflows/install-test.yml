@@ -37,7 +37,8 @@ jobs:
       # plugin records errors.
       - name: Install plugins and verify dependencies
         run: |
-          export CLAUDE_CONFIG_DIR="$(mktemp -d)"
+          CLAUDE_CONFIG_DIR="$(mktemp -d)"
+          export CLAUDE_CONFIG_DIR
           claude plugin marketplace add anthropics/claude-plugins-official
           claude plugin marketplace add "$GITHUB_WORKSPACE"
           claude plugin install claudelint@pdugan20-plugins
