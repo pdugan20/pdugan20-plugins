@@ -6,6 +6,9 @@
     "name": "Pat Dugan",
     "email": "dugan.pat@gmail.com"
   },
+  "allowCrossMarketplaceDependenciesOn": [
+    "claude-plugins-official"
+  ],
   "metadata": {
     "description": "Pat Dugan's personal Claude Code plugins."
   },
