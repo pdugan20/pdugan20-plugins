@@ -1,0 +1,50 @@
+name: Install Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekly: catches upstream CLI dependency-resolution changes and
+    # plugin-repo drift even when this repo is idle.
+    - cron: '0 7 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    name: Marketplace install smoke test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      # Registers THIS checkout as the marketplace (so a PR that breaks
+      # marketplace.json or drops allowCrossMarketplaceDependenciesOn
+      # fails here), then installs each plugin from its real GitHub
+      # source, asserting declared dependencies auto-install and no
+      # plugin records errors.
+      - name: Install plugins and verify dependencies
+        run: |
+          export CLAUDE_CONFIG_DIR="$(mktemp -d)"
+          claude plugin marketplace add anthropics/claude-plugins-official
+          claude plugin marketplace add "$GITHUB_WORKSPACE"
+          claude plugin install claudelint@pdugan20-plugins
+          claude plugin install mintlify-docs@pdugan20-plugins
+          list="$(claude plugin list --json)"
+          echo "$list" | jq -e '.[] | select(.id == "mintlify@claude-plugins-official")' > /dev/null \
+            || { echo "FAIL: mintlify dependency was not auto-installed"; exit 1; }
+          echo "$list" | jq -e '[.[] | select((.errors // []) | length > 0)] | length == 0' > /dev/null \
+            || { echo "FAIL: plugin errors present:"; echo "$list" | jq '.[] | {id, errors}'; exit 1; }
+          echo "PASS: all plugins installed, dependency auto-resolved, no errors"
