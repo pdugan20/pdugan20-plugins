@@ -30,6 +30,14 @@ jobs:
       - name: Install Claude Code CLI
         run: npm install -g @anthropic-ai/claude-code
 
+      # Plugin installs clone github-source repos over SSH with no HTTPS
+      # fallback (marketplace adds do fall back); runners have no SSH key,
+      # so rewrite SSH GitHub URLs to HTTPS.
+      - name: Use HTTPS for GitHub clones
+        run: |
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" --add
+
       # Registers THIS checkout as the marketplace (so a PR that breaks
       # marketplace.json or drops allowCrossMarketplaceDependenciesOn
       # fails here), then installs each plugin from its real GitHub
