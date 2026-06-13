@@ -43,7 +43,7 @@
         "repo": "pdugan20/mintlify-docs"
       },
       "description": "House-style toolkit for Mintlify docs sites: scaffold an IA, review pages against a content playbook, write reader-facing changelogs, and generate drift-checked CLI/MCP/API references.",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "author": {
         "name": "Pat Dugan"
       },
