@@ -1,0 +1,21 @@
+{
+  "name": "pdugan20-plugins",
+  "interface": {
+    "displayName": "Patrick's Plugins"
+  },
+  "plugins": [
+    {
+      "name": "mintlify-docs",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pdugan20/mintlify-docs.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
