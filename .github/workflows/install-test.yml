@@ -1,60 +1,65 @@
 name: Install Test
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   schedule:
-    # Weekly: catches upstream CLI dependency-resolution changes and
-    # plugin-repo drift even when this repo is idle.
-    - cron: '0 7 * * 1'
+    - cron: "0 7 * * 1"
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   install:
     name: Marketplace install smoke test
     runs-on: ubuntu-latest
-
+    timeout-minutes: 15
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
-          node-version: '24'
+          persist-credentials: false
 
-      - name: Install Claude Code CLI
-        run: npm install -g @anthropic-ai/claude-code
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
 
-      # Plugin installs clone github-source repos over SSH with no HTTPS
-      # fallback (marketplace adds do fall back); runners have no SSH key,
-      # so rewrite SSH GitHub URLs to HTTPS.
+      - name: Install dependencies
+        run: npm ci
+
       - name: Use HTTPS for GitHub clones
         run: |
           git config --global url."https://github.com/".insteadOf "git@github.com:"
           git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" --add
 
-      # Registers THIS checkout as the marketplace (so a PR that breaks
-      # marketplace.json or drops either cross-marketplace dependency allowlist
-      # fails here), then installs each plugin from its real GitHub
-      # source, asserting declared dependencies auto-install and no
-      # plugin records errors.
-      - name: Install plugins and verify dependencies
+      - name: Install Claude Code plugins
         run: |
+          export PATH="$GITHUB_WORKSPACE/node_modules/.bin:$PATH"
           CLAUDE_CONFIG_DIR="$(mktemp -d)"
           export CLAUDE_CONFIG_DIR
           claude plugin marketplace add anthropics/claude-plugins-official
           claude plugin marketplace add mintlify/mintlify-claude-plugin
           claude plugin marketplace add "$GITHUB_WORKSPACE"
-          claude plugin install claudelint@pdugan20-plugins
-          claude plugin install mintlify-docs@pdugan20-plugins
+          claude plugin install claudelint@patrick-tools
+          claude plugin install mintlify-docs@patrick-tools
+          claude plugin install patrick-workflows@patrick-tools
           list="$(claude plugin list --json)"
           echo "$list" | jq -e '.[] | select(.id == "mintlify@mintlify-marketplace")' > /dev/null \
             || { echo "FAIL: mintlify dependency was not auto-installed"; exit 1; }
           echo "$list" | jq -e '[.[] | select((.errors // []) | length > 0)] | length == 0' > /dev/null \
             || { echo "FAIL: plugin errors present:"; echo "$list" | jq '.[] | {id, errors}'; exit 1; }
-          echo "PASS: all plugins installed, dependency auto-resolved, no errors"
+
+      - name: Install Codex plugins
+        run: |
+          export PATH="$GITHUB_WORKSPACE/node_modules/.bin:$PATH"
+          codex plugin marketplace add "$GITHUB_WORKSPACE"
+          codex plugin add mintlify-docs@patrick-tools
+          codex plugin add patrick-workflows@patrick-tools
+          codex plugin list

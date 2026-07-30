@@ -1,7 +1,7 @@
 {
-  "name": "pdugan20-plugins",
-  "description": "Pat Dugan's personal Claude Code plugins: project linting, and Mintlify documentation tooling.",
-  "version": "0.1.0",
+  "name": "patrick-tools",
+  "description": "Pat Dugan's versioned design, development, linting, and documentation tools.",
+  "version": "1.0.0",
   "owner": {
     "name": "Pat Dugan",
     "email": "dugan.pat@gmail.com"
@@ -11,17 +11,18 @@
     "mintlify-marketplace"
   ],
   "metadata": {
-    "description": "Pat Dugan's personal Claude Code plugins."
+    "description": "Versioned tools for Claude Code and Codex."
   },
   "plugins": [
     {
       "name": "claudelint",
       "source": {
         "source": "github",
-        "repo": "pdugan20/claudelint"
+        "repo": "pdugan20/claudelint",
+        "ref": "v0.7.0"
       },
       "description": "A comprehensive linter for Claude Code projects. Validates CLAUDE.md, skills, settings, hooks, MCP servers, plugins, and more.",
-      "version": "0.5.0",
+      "version": "0.7.0",
       "author": {
         "name": "Pat Dugan"
       },
@@ -41,10 +42,11 @@
       "name": "mintlify-docs",
       "source": {
         "source": "github",
-        "repo": "pdugan20/mintlify-docs"
+        "repo": "pdugan20/mintlify-docs",
+        "ref": "v0.3.2"
       },
       "description": "House-style toolkit for Mintlify docs sites: scaffold an IA, review pages against a content playbook, write reader-facing changelogs, and generate drift-checked CLI/MCP/API references.",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "author": {
         "name": "Pat Dugan"
       },
@@ -57,6 +59,30 @@
         "docs",
         "technical-writing",
         "developer-tools"
+      ],
+      "category": "developer-tools"
+    },
+    {
+      "name": "patrick-workflows",
+      "source": {
+        "source": "github",
+        "repo": "pdugan20/patrick-workflows",
+        "ref": "v1.0.0"
+      },
+      "description": "Portable workflows for code-native design exploration, substantial feature delivery, and production hardening.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Pat Dugan"
+      },
+      "homepage": "https://github.com/pdugan20/patrick-workflows",
+      "repository": "https://github.com/pdugan20/patrick-workflows",
+      "license": "MIT",
+      "keywords": [
+        "agent-skills",
+        "design",
+        "development",
+        "code-quality",
+        "workflows"
       ],
       "category": "developer-tools"
     }
