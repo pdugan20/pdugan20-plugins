@@ -39,7 +39,7 @@ jobs:
           git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" --add
 
       # Registers THIS checkout as the marketplace (so a PR that breaks
-      # marketplace.json or drops allowCrossMarketplaceDependenciesOn
+      # marketplace.json or drops either cross-marketplace dependency allowlist
       # fails here), then installs each plugin from its real GitHub
       # source, asserting declared dependencies auto-install and no
       # plugin records errors.
@@ -48,11 +48,12 @@ jobs:
           CLAUDE_CONFIG_DIR="$(mktemp -d)"
           export CLAUDE_CONFIG_DIR
           claude plugin marketplace add anthropics/claude-plugins-official
+          claude plugin marketplace add mintlify/mintlify-claude-plugin
           claude plugin marketplace add "$GITHUB_WORKSPACE"
           claude plugin install claudelint@pdugan20-plugins
           claude plugin install mintlify-docs@pdugan20-plugins
           list="$(claude plugin list --json)"
-          echo "$list" | jq -e '.[] | select(.id == "mintlify@claude-plugins-official")' > /dev/null \
+          echo "$list" | jq -e '.[] | select(.id == "mintlify@mintlify-marketplace")' > /dev/null \
             || { echo "FAIL: mintlify dependency was not auto-installed"; exit 1; }
           echo "$list" | jq -e '[.[] | select((.errors // []) | length > 0)] | length == 0' > /dev/null \
             || { echo "FAIL: plugin errors present:"; echo "$list" | jq '.[] | {id, errors}'; exit 1; }
