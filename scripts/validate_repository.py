@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
-EXPECTED_CLAUDE = {"claudelint", "mintlify-docs", "patrick-workflows"}
-EXPECTED_CODEX = {"mintlify-docs", "patrick-workflows"}
+EXPECTED_CLAUDE = {"claudelint", "mintlify-docs", "patrick-skills"}
+EXPECTED_CODEX = {"mintlify-docs", "patrick-skills"}
 
 
 def load(path: Path) -> dict:
@@ -36,10 +36,16 @@ def validate(release_tag: str | None = None, root: Path = ROOT) -> list[str]:
     lock_version = package_lock.get("version")
     lock_package_version = package_lock.get("packages", {}).get("", {}).get("version")
 
-    if claude_manifest.get("name") != "patrick-tools":
-        errors.append("Claude marketplace name must be patrick-tools")
-    if codex_manifest.get("name") != "patrick-tools":
-        errors.append("Codex marketplace name must be patrick-tools")
+    if package.get("name") != "patrick-plugins":
+        errors.append("package name must be patrick-plugins")
+    if package_lock.get("name") != package.get("name"):
+        errors.append("package-lock name must match the package name")
+    if package_lock.get("packages", {}).get("", {}).get("name") != package.get("name"):
+        errors.append("package-lock root package name must match the package name")
+    if claude_manifest.get("name") != "patrick-plugins":
+        errors.append("Claude marketplace name must be patrick-plugins")
+    if codex_manifest.get("name") != "patrick-plugins":
+        errors.append("Codex marketplace name must be patrick-plugins")
     if not isinstance(marketplace_version, str) or not VERSION_RE.fullmatch(
         marketplace_version
     ):
@@ -77,10 +83,10 @@ def validate(release_tag: str | None = None, root: Path = ROOT) -> list[str]:
             errors.append(f"Codex plugin {name} must declare authentication timing")
 
     readme = (root / "README.md").read_text(encoding="utf-8")
-    if "pdugan20/pdugan20-plugins" in readme:
-        errors.append("README contains the retired repository path")
-    if "pdugan20/patrick-tools" not in readme:
-        errors.append("README must document the renamed marketplace")
+    if "pdugan20/plugins" not in readme:
+        errors.append("README must document the canonical marketplace repository")
+    if "patrick-skills@patrick-plugins" not in readme:
+        errors.append("README must document the canonical skill plugin install")
     return errors
 
 

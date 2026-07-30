@@ -1,7 +1,7 @@
 {
-  "name": "patrick-tools",
+  "name": "patrick-plugins",
   "interface": {
-    "displayName": "Patrick's Tools"
+    "displayName": "Patrick's Plugins"
   },
   "plugins": [
     {
@@ -9,7 +9,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/pdugan20/mintlify-docs.git",
-        "ref": "v0.3.2"
+        "ref": "v0.3.3"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -18,11 +18,11 @@
       "category": "Developer Tools"
     },
     {
-      "name": "patrick-workflows",
+      "name": "patrick-skills",
       "source": {
         "source": "url",
-        "url": "https://github.com/pdugan20/patrick-workflows.git",
-        "ref": "v1.1.0"
+        "url": "https://github.com/pdugan20/skills.git",
+        "ref": "v2.0.0"
       },
       "policy": {
         "installation": "AVAILABLE",

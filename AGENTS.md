@@ -1,6 +1,6 @@
 # Repository Instructions
 
-- Keep the Claude Code and Codex marketplace identifiers set to `patrick-tools`.
+- Keep the Claude Code and Codex marketplace identifiers set to `patrick-plugins`.
 - Pin every remote plugin source to a release tag and keep each entry's version synchronized with that tag.
 - Keep shared plugin entries synchronized between the two marketplace manifests.
 - Update the migration instructions when a marketplace or plugin identifier changes.

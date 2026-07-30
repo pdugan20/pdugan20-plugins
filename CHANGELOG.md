@@ -4,6 +4,17 @@ All notable changes to this marketplace are documented in this file.
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-07-30
+
+### Changed
+
+- Renamed the repository from `patrick-tools` to `plugins` and the marketplace identifier from `patrick-tools` to `patrick-plugins`.
+- Renamed the `patrick-workflows` plugin to `patrick-skills` and pinned it to the canonical `pdugan20/skills` v2.0.0 release.
+- Updated Mintlify Docs to 0.3.3 so its install guidance and release helper use the renamed marketplace.
+- Updated ClaudeLint to 0.7.1 so its guided installer and documentation use the renamed marketplace.
+- Reorganized the README around the shortest Claude Code and Codex installation paths.
+- Added migration guidance for both retired marketplace identifiers and the retired skill plugin name.
+
 ## [1.0.1] - 2026-07-30
 
 ### Changed
@@ -28,6 +39,7 @@ All notable changes to this marketplace are documented in this file.
 - Added Mintlify Docs 0.3.2 with direct Skills CLI installation and hardened release checks.
 - Added cross-runtime catalog validation, install smoke tests, spelling checks, workflow-security analysis, and scheduled link validation.
 
-[unreleased]: https://github.com/pdugan20/patrick-tools/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/pdugan20/patrick-tools/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/pdugan20/patrick-tools/releases/tag/v1.0.0
+[unreleased]: https://github.com/pdugan20/plugins/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/pdugan20/plugins/compare/v1.0.1...v2.0.0
+[1.0.1]: https://github.com/pdugan20/plugins/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/pdugan20/plugins/releases/tag/v1.0.0
