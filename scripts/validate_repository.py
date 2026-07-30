@@ -22,20 +22,33 @@ def entries(manifest: dict) -> dict[str, dict]:
     return {entry["name"]: entry for entry in manifest.get("plugins", [])}
 
 
-def validate(release_tag: str | None = None) -> list[str]:
+def validate(release_tag: str | None = None, root: Path = ROOT) -> list[str]:
     errors: list[str] = []
-    claude_manifest = load(ROOT / ".claude-plugin" / "marketplace.json")
-    codex_manifest = load(ROOT / ".agents" / "plugins" / "marketplace.json")
+    package = load(root / "package.json")
+    package_lock = load(root / "package-lock.json")
+    claude_manifest = load(root / ".claude-plugin" / "marketplace.json")
+    codex_manifest = load(root / ".agents" / "plugins" / "marketplace.json")
     claude = entries(claude_manifest)
     codex = entries(codex_manifest)
+
+    marketplace_version = claude_manifest.get("version")
+    package_version = package.get("version")
+    lock_version = package_lock.get("version")
+    lock_package_version = package_lock.get("packages", {}).get("", {}).get("version")
 
     if claude_manifest.get("name") != "patrick-tools":
         errors.append("Claude marketplace name must be patrick-tools")
     if codex_manifest.get("name") != "patrick-tools":
         errors.append("Codex marketplace name must be patrick-tools")
-    if claude_manifest.get("version") != "1.0.0":
-        errors.append("Claude marketplace version must be 1.0.0")
-    if release_tag is not None and release_tag != f"v{claude_manifest.get('version')}":
+    if not isinstance(marketplace_version, str) or not VERSION_RE.fullmatch(
+        marketplace_version
+    ):
+        errors.append("Claude marketplace version must be a stable semantic version")
+    if package_version != marketplace_version:
+        errors.append("package version must match the Claude marketplace version")
+    if lock_version != package_version or lock_package_version != package_version:
+        errors.append("package-lock versions must match the package version")
+    if release_tag is not None and release_tag != f"v{marketplace_version}":
         errors.append(f"release tag {release_tag!r} must match the marketplace version")
     if set(claude) != EXPECTED_CLAUDE:
         errors.append(f"Claude plugins must be {sorted(EXPECTED_CLAUDE)}")
@@ -52,6 +65,9 @@ def validate(release_tag: str | None = None) -> list[str]:
 
     for name, entry in codex.items():
         source = entry.get("source", {})
+        if name not in claude:
+            errors.append(f"Codex plugin {name} must have a matching Claude entry")
+            continue
         expected_ref = f"v{claude[name]['version']}"
         if source.get("ref") != expected_ref:
             errors.append(f"Codex plugin {name} source ref must equal {expected_ref}")
@@ -60,7 +76,7 @@ def validate(release_tag: str | None = None) -> list[str]:
         if entry.get("policy", {}).get("authentication") not in {"ON_INSTALL", "ON_USE"}:
             errors.append(f"Codex plugin {name} must declare authentication timing")
 
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme = (root / "README.md").read_text(encoding="utf-8")
     if "pdugan20/pdugan20-plugins" in readme:
         errors.append("README contains the retired repository path")
     if "pdugan20/patrick-tools" not in readme:

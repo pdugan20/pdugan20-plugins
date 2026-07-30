@@ -1,13 +1,13 @@
 {
   "name": "patrick-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Versioned Claude Code and Codex plugin marketplace.",
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"**/*.{json,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{json,yaml,yml}\"",
-    "lint:claude": "claudelint validate-plugin",
+    "lint:claude": "claude plugin validate . --strict",
     "lint:markdown": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
     "test": "python3 -m unittest discover -s scripts -p 'test_*.py' -v",
     "validate": "python3 scripts/validate_repository.py",
@@ -16,7 +16,6 @@
   "devDependencies": {
     "@anthropic-ai/claude-code": "2.1.220",
     "@openai/codex": "0.146.0",
-    "claude-code-lint": "0.7.0",
     "markdownlint-cli2": "0.23.2",
     "prettier": "3.9.6"
   },
