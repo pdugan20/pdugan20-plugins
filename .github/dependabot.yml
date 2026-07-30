@@ -1,5 +1,24 @@
 version: 2
 updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/New_York"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+    assignees:
+      - "pdugan20"
+    reviewers:
+      - "pdugan20"
+
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -8,6 +27,8 @@ updates:
       day: "monday"
       time: "06:00"
       timezone: "America/New_York"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     commit-message:
       prefix: "ci"
