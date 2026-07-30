@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Verify marketplace
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
