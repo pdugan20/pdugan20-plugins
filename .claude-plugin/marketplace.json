@@ -1,7 +1,7 @@
 {
-  "name": "patrick-tools",
-  "description": "Pat Dugan's versioned design, development, linting, and documentation tools.",
-  "version": "1.0.1",
+  "name": "patrick-plugins",
+  "description": "Pat Dugan's versioned plugins for design and development.",
+  "version": "2.0.0",
   "owner": {
     "name": "Pat Dugan",
     "email": "dugan.pat@gmail.com"
@@ -11,7 +11,7 @@
     "mintlify-marketplace"
   ],
   "metadata": {
-    "description": "Versioned tools for Claude Code and Codex."
+    "description": "Versioned plugins for Claude Code and Codex."
   },
   "plugins": [
     {
@@ -19,10 +19,10 @@
       "source": {
         "source": "github",
         "repo": "pdugan20/claudelint",
-        "ref": "v0.7.0"
+        "ref": "v0.7.1"
       },
       "description": "A comprehensive linter for Claude Code projects. Validates CLAUDE.md, skills, settings, hooks, MCP servers, plugins, and more.",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "author": {
         "name": "Pat Dugan"
       },
@@ -43,10 +43,10 @@
       "source": {
         "source": "github",
         "repo": "pdugan20/mintlify-docs",
-        "ref": "v0.3.2"
+        "ref": "v0.3.3"
       },
       "description": "House-style toolkit for Mintlify docs sites: scaffold an IA, review pages against a content playbook, write reader-facing changelogs, and generate drift-checked CLI/MCP/API references.",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "author": {
         "name": "Pat Dugan"
       },
@@ -63,26 +63,26 @@
       "category": "developer-tools"
     },
     {
-      "name": "patrick-workflows",
+      "name": "patrick-skills",
       "source": {
         "source": "github",
-        "repo": "pdugan20/patrick-workflows",
-        "ref": "v1.1.0"
+        "repo": "pdugan20/skills",
+        "ref": "v2.0.0"
       },
-      "description": "Portable workflows for code-native design exploration, substantial feature delivery, and production hardening.",
-      "version": "1.1.0",
+      "description": "Portable skills for code-native design exploration, substantial feature delivery, and production hardening.",
+      "version": "2.0.0",
       "author": {
         "name": "Pat Dugan"
       },
-      "homepage": "https://github.com/pdugan20/patrick-workflows",
-      "repository": "https://github.com/pdugan20/patrick-workflows",
+      "homepage": "https://github.com/pdugan20/skills",
+      "repository": "https://github.com/pdugan20/skills",
       "license": "MIT",
       "keywords": [
         "agent-skills",
         "design",
         "development",
         "code-quality",
-        "workflows"
+        "skills"
       ],
       "category": "developer-tools"
     }

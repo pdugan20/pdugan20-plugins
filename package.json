@@ -1,8 +1,8 @@
 {
-  "name": "patrick-tools",
-  "version": "1.0.1",
+  "name": "patrick-plugins",
+  "version": "2.0.0",
   "private": true,
-  "description": "Versioned Claude Code and Codex plugin marketplace.",
+  "description": "Versioned plugins for Claude Code and Codex.",
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"**/*.{json,yaml,yml}\"",

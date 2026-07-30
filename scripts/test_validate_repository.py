@@ -75,12 +75,21 @@ class ValidateRepositoryTests(unittest.TestCase):
     def test_expected_catalog_membership_is_explicit(self) -> None:
         self.assertEqual(
             validate_repository.EXPECTED_CLAUDE,
-            {"claudelint", "mintlify-docs", "patrick-workflows"},
+            {"claudelint", "mintlify-docs", "patrick-skills"},
         )
         self.assertEqual(
             validate_repository.EXPECTED_CODEX,
-            {"mintlify-docs", "patrick-workflows"},
+            {"mintlify-docs", "patrick-skills"},
         )
+
+    def test_marketplace_identity_is_explicit(self) -> None:
+        package = self.read_json("package.json")
+        claude = self.read_json(".claude-plugin/marketplace.json")
+        codex = self.read_json(".agents/plugins/marketplace.json")
+
+        self.assertEqual(package["name"], "patrick-plugins")
+        self.assertEqual(claude["name"], "patrick-plugins")
+        self.assertEqual(codex["name"], "patrick-plugins")
 
 
 if __name__ == "__main__":
