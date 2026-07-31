@@ -4,6 +4,21 @@ All notable changes to this marketplace are documented in this file.
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-07-30
+
+### Changed
+
+- Updated Patrick Skills to 2.1.0 for Claude Code and Codex, adding the four hardened Mintlify documentation skills to the combined collection.
+- Removed the standalone `mintlify-docs` entry from both marketplaces now that its skills are distributed by `patrick-skills`.
+- Removed the unused Mintlify cross-marketplace dependency allowlist entry.
+- Updated the marketplace installation smoke test to exercise only the packages that remain cataloged.
+- Added a release runbook that prevents unpublished source pins and requires both runtime installation checks.
+
+### Migration
+
+- Install `patrick-skills@patrick-plugins`, then remove `mintlify-docs@patrick-plugins`.
+- Use `scaffold-mintlify-site`, `review-mintlify-docs`, `generate-mintlify-reference`, and `write-mintlify-changelog`; the old `review-docs`, `document-reference`, and `changelog-writer` names remain only in historical releases.
+
 ## [2.0.0] - 2026-07-30
 
 ### Changed
@@ -39,7 +54,8 @@ All notable changes to this marketplace are documented in this file.
 - Added Mintlify Docs 0.3.2 with direct Skills CLI installation and hardened release checks.
 - Added cross-runtime catalog validation, install smoke tests, spelling checks, workflow-security analysis, and scheduled link validation.
 
-[unreleased]: https://github.com/pdugan20/plugins/compare/v2.0.0...HEAD
+[unreleased]: https://github.com/pdugan20/plugins/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/pdugan20/plugins/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/pdugan20/plugins/compare/v1.0.1...v2.0.0
 [1.0.1]: https://github.com/pdugan20/plugins/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/pdugan20/plugins/releases/tag/v1.0.0

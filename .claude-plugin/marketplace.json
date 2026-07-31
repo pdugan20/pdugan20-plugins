@@ -1,15 +1,12 @@
 {
   "name": "patrick-plugins",
   "description": "Pat Dugan's versioned plugins for design and development.",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "owner": {
     "name": "Pat Dugan",
     "email": "dugan.pat@gmail.com"
   },
-  "allowCrossMarketplaceDependenciesOn": [
-    "claude-plugins-official",
-    "mintlify-marketplace"
-  ],
+  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "metadata": {
     "description": "Versioned plugins for Claude Code and Codex."
   },
@@ -39,38 +36,14 @@
       "category": "developer-tools"
     },
     {
-      "name": "mintlify-docs",
-      "source": {
-        "source": "github",
-        "repo": "pdugan20/mintlify-docs",
-        "ref": "v0.3.3"
-      },
-      "description": "House-style toolkit for Mintlify docs sites: scaffold an IA, review pages against a content playbook, write reader-facing changelogs, and generate drift-checked CLI/MCP/API references.",
-      "version": "0.3.3",
-      "author": {
-        "name": "Pat Dugan"
-      },
-      "homepage": "https://github.com/pdugan20/mintlify-docs",
-      "repository": "https://github.com/pdugan20/mintlify-docs",
-      "license": "MIT",
-      "keywords": [
-        "documentation",
-        "mintlify",
-        "docs",
-        "technical-writing",
-        "developer-tools"
-      ],
-      "category": "developer-tools"
-    },
-    {
       "name": "patrick-skills",
       "source": {
         "source": "github",
         "repo": "pdugan20/skills",
-        "ref": "v2.0.0"
+        "ref": "v2.1.0"
       },
-      "description": "Portable skills for code-native design exploration, substantial feature delivery, and production hardening.",
-      "version": "2.0.0",
+      "description": "Portable skills for code-native design exploration, production delivery, hardening, and technical documentation.",
+      "version": "2.1.0",
       "author": {
         "name": "Pat Dugan"
       },
@@ -81,6 +54,8 @@
         "agent-skills",
         "design",
         "development",
+        "documentation",
+        "mintlify",
         "code-quality",
         "skills"
       ],

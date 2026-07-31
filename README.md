@@ -24,8 +24,7 @@ codex plugin add patrick-skills@patrick-plugins
 
 | Plugin | What it provides |
 | --- | --- |
-| [Patrick Skills](https://github.com/pdugan20/skills/tree/v2.0.0) | Design exploration, feature delivery, and production hardening skills |
-| [Mintlify Docs](https://github.com/pdugan20/mintlify-docs/tree/v0.3.3) | Documentation authoring and review skills |
+| [Patrick Skills](https://github.com/pdugan20/skills/tree/v2.1.0) | Design exploration, feature delivery, production hardening, and Mintlify documentation skills |
 | [ClaudeLint](https://github.com/pdugan20/claudelint/tree/v0.7.1) | Claude Code project and plugin linting |
 
 ClaudeLint is currently available only in the Claude Code marketplace.
@@ -36,6 +35,10 @@ Remove any old marketplace registrations named `pdugan20-plugins` or `patrick-to
 
 The renamed skill plugin is `patrick-skills@patrick-plugins`.
 
+The retired `mintlify-docs@patrick-plugins` package has been consolidated into
+Patrick Skills. Install `patrick-skills@patrick-plugins`, then remove the old
+plugin. See the [skill migration guide](https://github.com/pdugan20/skills/blob/v2.1.0/docs/migrations/mintlify-docs.md) for the current skill names.
+
 ## Development
 
 ```bash
@@ -43,4 +46,4 @@ npm ci
 npm run verify
 ```
 
-Each source is pinned to a release tag. Marketplace releases use the matching section of [CHANGELOG.md](CHANGELOG.md) as their GitHub Release notes.
+Each source is pinned to a release tag. Marketplace releases use the matching section of [CHANGELOG.md](CHANGELOG.md) as their GitHub Release notes; see the [release guide](RELEASING.md) for sequencing and installation checks.
