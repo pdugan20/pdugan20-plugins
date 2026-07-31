@@ -4,6 +4,14 @@ All notable changes to this marketplace are documented in this file.
 
 ## [Unreleased]
 
+## [3.2.0] - 2026-07-30
+
+### Changed
+
+- Updated Patrick Skills to 2.3.0 for Claude Code and Codex.
+- Added the `feature-spike` skill for bounded product-value and technical-feasibility decisions before production investment.
+- Updated Patrick Skills and migration-guide links to their exact 2.3.0 release paths.
+
 ## [3.1.0] - 2026-07-30
 
 ### Changed
@@ -62,7 +70,8 @@ All notable changes to this marketplace are documented in this file.
 - Added Mintlify Docs 0.3.2 with direct Skills CLI installation and hardened release checks.
 - Added cross-runtime catalog validation, install smoke tests, spelling checks, workflow-security analysis, and scheduled link validation.
 
-[unreleased]: https://github.com/pdugan20/plugins/compare/v3.1.0...HEAD
+[unreleased]: https://github.com/pdugan20/plugins/compare/v3.2.0...HEAD
+[3.2.0]: https://github.com/pdugan20/plugins/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/pdugan20/plugins/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/pdugan20/plugins/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/pdugan20/plugins/compare/v1.0.1...v2.0.0
