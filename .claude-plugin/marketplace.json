@@ -1,7 +1,7 @@
 {
   "name": "patrick-plugins",
   "description": "Pat Dugan's versioned plugins for design and development.",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "owner": {
     "name": "Pat Dugan",
     "email": "dugan.pat@gmail.com"
@@ -40,10 +40,10 @@
       "source": {
         "source": "github",
         "repo": "pdugan20/skills",
-        "ref": "v2.4.0"
+        "ref": "v3.0.0"
       },
-      "description": "Portable skills for code-native design exploration, design-system alignment and auditing, UI video analysis, feature validation and delivery, production hardening, and technical documentation.",
-      "version": "2.4.0",
+      "description": "Portable skills for repository setup, code-native design exploration, design-system alignment and auditing, UI video analysis, feature validation and delivery, and technical documentation.",
+      "version": "3.0.0",
       "author": {
         "name": "Pat Dugan"
       },
@@ -55,6 +55,7 @@
         "design",
         "design-system",
         "development",
+        "repository-scaffolding",
         "documentation",
         "mintlify",
         "video-analysis",
