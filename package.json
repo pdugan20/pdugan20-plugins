@@ -1,6 +1,6 @@
 {
   "name": "patrick-plugins",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "private": true,
   "description": "Versioned plugins for Claude Code and Codex.",
   "license": "MIT",

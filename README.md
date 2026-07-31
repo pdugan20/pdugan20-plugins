@@ -24,7 +24,7 @@ codex plugin add patrick-skills@patrick-plugins
 
 | Plugin | What it provides |
 | --- | --- |
-| [Patrick Skills](https://github.com/pdugan20/skills/tree/v2.3.0) | Design exploration, feature validation and delivery, production hardening, and Mintlify documentation skills |
+| [Patrick Skills](https://github.com/pdugan20/skills/tree/v2.4.0) | Design exploration, design-system alignment and auditing, UI video analysis, feature validation and delivery, hardening, and Mintlify documentation |
 | [ClaudeLint](https://github.com/pdugan20/claudelint/tree/v0.7.1) | Claude Code project and plugin linting |
 
 ClaudeLint is currently available only in the Claude Code marketplace.
@@ -34,10 +34,6 @@ ClaudeLint is currently available only in the Claude Code marketplace.
 Remove any old marketplace registrations named `pdugan20-plugins` or `patrick-tools`, then add `pdugan20/plugins` and reinstall plugins with the commands above. GitHub redirects the old repository URLs, but marketplace and plugin IDs do not redirect.
 
 The renamed skill plugin is `patrick-skills@patrick-plugins`.
-
-The retired `mintlify-docs@patrick-plugins` package has been consolidated into
-Patrick Skills. Install `patrick-skills@patrick-plugins`, then remove the old
-plugin. See the [skill migration guide](https://github.com/pdugan20/skills/blob/v2.3.0/docs/migrations/mintlify-docs.md) for the current skill names.
 
 ## Development
 
