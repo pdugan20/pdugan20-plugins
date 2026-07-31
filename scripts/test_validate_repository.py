@@ -75,11 +75,11 @@ class ValidateRepositoryTests(unittest.TestCase):
     def test_expected_catalog_membership_is_explicit(self) -> None:
         self.assertEqual(
             validate_repository.EXPECTED_CLAUDE,
-            {"claudelint", "mintlify-docs", "patrick-skills"},
+            {"claudelint", "patrick-skills"},
         )
         self.assertEqual(
             validate_repository.EXPECTED_CODEX,
-            {"mintlify-docs", "patrick-skills"},
+            {"patrick-skills"},
         )
 
     def test_marketplace_identity_is_explicit(self) -> None:

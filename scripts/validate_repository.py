@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
-EXPECTED_CLAUDE = {"claudelint", "mintlify-docs", "patrick-skills"}
-EXPECTED_CODEX = {"mintlify-docs", "patrick-skills"}
+EXPECTED_CLAUDE = {"claudelint", "patrick-skills"}
+EXPECTED_CODEX = {"patrick-skills"}
 
 
 def load(path: Path) -> dict:

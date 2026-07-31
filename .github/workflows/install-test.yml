@@ -45,14 +45,10 @@ jobs:
           CLAUDE_CONFIG_DIR="$(mktemp -d)"
           export CLAUDE_CONFIG_DIR
           claude plugin marketplace add anthropics/claude-plugins-official
-          claude plugin marketplace add mintlify/mintlify-claude-plugin
           claude plugin marketplace add "$GITHUB_WORKSPACE"
           claude plugin install claudelint@patrick-plugins
-          claude plugin install mintlify-docs@patrick-plugins
           claude plugin install patrick-skills@patrick-plugins
           list="$(claude plugin list --json)"
-          echo "$list" | jq -e '.[] | select(.id == "mintlify@mintlify-marketplace")' > /dev/null \
-            || { echo "FAIL: mintlify dependency was not auto-installed"; exit 1; }
           echo "$list" | jq -e '[.[] | select((.errors // []) | length > 0)] | length == 0' > /dev/null \
             || { echo "FAIL: plugin errors present:"; echo "$list" | jq '.[] | {id, errors}'; exit 1; }
 
@@ -60,6 +56,5 @@ jobs:
         run: |
           export PATH="$GITHUB_WORKSPACE/node_modules/.bin:$PATH"
           codex plugin marketplace add "$GITHUB_WORKSPACE"
-          codex plugin add mintlify-docs@patrick-plugins
           codex plugin add patrick-skills@patrick-plugins
           codex plugin list
