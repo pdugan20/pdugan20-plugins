@@ -24,7 +24,7 @@ codex plugin add patrick-skills@patrick-plugins
 
 | Plugin | What it provides |
 | --- | --- |
-| [Patrick Skills](https://github.com/pdugan20/skills/tree/v2.4.0) | Design exploration, design-system alignment and auditing, UI video analysis, feature validation and delivery, hardening, and Mintlify documentation |
+| [Patrick Skills](https://github.com/pdugan20/skills/tree/v3.0.0) | Repository setup, design exploration, design-system alignment and auditing, UI video analysis, feature validation and delivery, and Mintlify documentation |
 | [ClaudeLint](https://github.com/pdugan20/claudelint/tree/v0.7.1) | Claude Code project and plugin linting |
 
 ClaudeLint is currently available only in the Claude Code marketplace.

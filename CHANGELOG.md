@@ -4,6 +4,16 @@ All notable changes to this marketplace are documented in this file.
 
 ## [Unreleased]
 
+## [3.4.0] - 2026-07-31
+
+### Changed
+
+- Updated Patrick Skills to 3.0.0 for Claude Code and Codex.
+- Added `bootstrap-repository` for proportional Swift, Expo/React Native,
+  Python, and web repository setup.
+- Removed `production-hardening` after its repository-backed evaluation found
+  no reliable lift over explicit hardening requests and project instructions.
+
 ## [3.3.0] - 2026-07-31
 
 ### Changed
@@ -82,7 +92,8 @@ All notable changes to this marketplace are documented in this file.
 - Added Mintlify Docs 0.3.2 with direct Skills CLI installation and hardened release checks.
 - Added cross-runtime catalog validation, install smoke tests, spelling checks, workflow-security analysis, and scheduled link validation.
 
-[unreleased]: https://github.com/pdugan20/plugins/compare/v3.3.0...HEAD
+[unreleased]: https://github.com/pdugan20/plugins/compare/v3.4.0...HEAD
+[3.4.0]: https://github.com/pdugan20/plugins/compare/v3.3.0...v3.4.0
 [3.3.0]: https://github.com/pdugan20/plugins/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/pdugan20/plugins/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/pdugan20/plugins/compare/v3.0.0...v3.1.0
