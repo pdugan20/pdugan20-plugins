@@ -1,8 +1,8 @@
-# Plugins
+# plugins
 
-[![CI](https://github.com/pdugan20/plugins/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/plugins/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/pdugan20/plugins?logo=github)](https://github.com/pdugan20/plugins/releases/latest)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?logo=opensourceinitiative&logoColor=white)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/pdugan20/plugins/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/pdugan20/plugins/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/pdugan20/plugins)](https://github.com/pdugan20/plugins/releases/latest)
+[![License](https://img.shields.io/github/license/pdugan20/plugins)](LICENSE)
 
 Versioned plugins for Claude Code and Codex.
 
