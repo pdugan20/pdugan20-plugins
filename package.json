@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/claude-code": "2.1.220",
-    "@openai/codex": "0.146.0",
+    "@openai/codex": "0.147.0",
     "markdownlint-cli2": "0.23.2",
     "prettier": "3.9.6"
   },
